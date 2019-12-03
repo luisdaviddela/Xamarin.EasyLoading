@@ -12,6 +12,13 @@ namespace xamloading
         public MainPage()
         {
             InitializeComponent();
+            //BindingContext =new vm_sq();
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            UiState.AnimationIsRunning("true");
+            UiState.StateKey = Xamarin.Forms.StateSquid.State.Loading;
         }
     }
 }

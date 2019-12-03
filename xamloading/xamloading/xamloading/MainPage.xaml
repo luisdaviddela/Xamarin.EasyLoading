@@ -2,13 +2,40 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:xamloading"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:state="clr-namespace:Xamarin.Forms.StateSquid;assembly=Xamarin.Forms.StateSquid"
              x:Class="xamloading.MainPage">
 
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <Button Text="Trigger Load" 
+                Clicked="Button_Clicked"
+                CornerRadius="20"
+                HeightRequest="40"
+                BackgroundColor="#1a81bc"
+                TextColor="White" 
+                Margin="0,0,0,20" 
+                HorizontalOptions="Center" 
+                Padding="50,0" />
+        <StackLayout state:StateLayout.CurrentState="Loading">
+            <state:StateLayout.StateViews>
+                <state:StateView 
+                    IsClippedToBounds="True" 
+                    IsTabStop="True" 
+                    Visual="Default" 
+                    x:Name="UiState" 
+                    StateKey="Loading" 
+                    RepeatCount="3">
+                    <state:StateView.RepeatTemplate>
+                        <DataTemplate>
+                            <Label Text="Welcome to Xamarin.Forms!" 
+                        HorizontalOptions="Center"/>
+                        </DataTemplate>
+                    </state:StateView.RepeatTemplate>
+                </state:StateView>
+            </state:StateLayout.StateViews>
+        </StackLayout>
+        
+           
     </StackLayout>
 
 </ContentPage>
